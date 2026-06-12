@@ -217,6 +217,27 @@ rule-providers:
     path: "./rules/vpn-set-rules/abroad-vk.list"
     url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/vk.list
     interval: 86400
+  abroad-rutube:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/abroad-rutube.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/rutube.list
+    interval: 86400
+  abroad-mts:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/abroad-mts.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/mts.list
+    interval: 86400
+  abroad-tbank:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/abroad-tbank.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/tbank.list
+    interval: 86400
 rules:
 - RULE-SET,common-openai,PROXY
 - DOMAIN-SUFFIX,github.com,DIRECT
@@ -235,6 +256,9 @@ rules:
 - RULE-SET,abroad-yandex,DIRECT
 - RULE-SET,abroad-mailru,DIRECT
 - RULE-SET,abroad-vk,DIRECT
+- RULE-SET,abroad-rutube,DIRECT
+- RULE-SET,abroad-mts,DIRECT
+- RULE-SET,abroad-tbank,DIRECT
 - RULE-SET,abroad-ozon,DIRECT
 - RULE-SET,common-ru-tlds,DIRECT
 - DOMAIN-SUFFIX,local,DIRECT
