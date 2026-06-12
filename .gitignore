@@ -1,0 +1,15 @@
+.DS_Store
+
+# Real local profiles can contain private subscription URLs.
+Abroad.yaml
+Russia.yaml
+*.hidemyname.yaml
+
+# Keep only sanitized examples in the public repository.
+!Abroad.example.yaml
+!Russia.example.yaml
+
+# Local/editor noise.
+*.bak
+*.tmp
+*.log

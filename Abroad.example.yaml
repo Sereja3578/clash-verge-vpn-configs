@@ -1,0 +1,363 @@
+---
+mixed-port: 7890
+mode: rule
+allow-lan: false
+ipv6: false
+tun:
+  enable: true
+  stack: gvisor
+  auto-route: true
+  auto-detect-interface: true
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  use-hosts: true
+  use-system-hosts: true
+  fake-ip-filter:
+  - "*.lan"
+  - "*.local"
+  - "*.home.arpa"
+  #### Sergey's Macbook pro begin
+  ### AnyConnect begin
+  ## Stream and MTS begin
+  # BEGIN MANAGED CISCO DNS
+  - "+.stream.local"
+  # END MANAGED CISCO DNS
+  ## Stream and MTS end
+  ### AnyConnect end
+  #### Sergey's Macbook pro end
+  #### Sergey's Macbook pro begin
+  ### Cisco AnyConnect Secure Mobility Client begin
+  ## cp_mts_outside.xml / 91.207.84.241 begin
+  # BEGIN MANAGED CISCO DNS
+  - "+.atb.su"
+  - "+.dam.mtsmedia.ru"
+  - "+.frsmsk.mts.ru"
+  - "+.gtlk.ru"
+  - "+.inside.mts.ru"
+  - "+.intmts.ru"
+  - "+.m.ts"
+  - "+.mgts.corp.net"
+  - "+.mgts.ru"
+  - "+.mr.ru"
+  - "+.msk.mts.ru"
+  - "+.mts-corp.ru"
+  - "+.mts-lab.ru"
+  - "+.mts.ru"
+  - "+.mtsbank.ru"
+  - "+.mtsit.com"
+  - "+.mtsit.local"
+  - "+.mtsretail.ru"
+  - "+.mws.ru"
+  - "+.redsecurity.ru"
+  - "+.sapsf.com"
+  - "+.stroki.ru"
+  - "+.superanalytics.ru"
+  - "+.ticketland.ru"
+  - "+.truetabs.ru"
+  # END MANAGED CISCO DNS
+  ## cp_mts_outside.xml / 91.207.84.241 end
+  ### Cisco AnyConnect Secure Mobility Client end
+  #### Sergey's Macbook pro end
+  - localhost
+  - localhost.*
+  default-nameserver:
+  - 77.88.8.8
+  - 1.1.1.1
+  - 8.8.8.8
+  nameserver:
+  - https://cloudflare-dns.com/dns-query
+  - https://dns.google/dns-query
+  - https://dns.quad9.net/dns-query
+  proxy-server-nameserver:
+  - https://cloudflare-dns.com/dns-query
+  - https://dns.google/dns-query
+  - 77.88.8.8
+  direct-nameserver:
+  - system
+  - https://cloudflare-dns.com/dns-query
+  direct-nameserver-follow-policy: true
+  nameserver-policy:
+    #### Sergey's Macbook pro begin
+    ### Cisco AnyConnect Secure Mobility Client begin
+    ## cp_mts_outside.xml / 91.207.84.241 begin
+    # BEGIN MANAGED CISCO DNS
+    "+.atb.su":
+    - system
+    "+.dam.mtsmedia.ru":
+    - system
+    "+.frsmsk.mts.ru":
+    - system
+    "+.gtlk.ru":
+    - system
+    "+.inside.mts.ru":
+    - system
+    "+.intmts.ru":
+    - system
+    "+.m.ts":
+    - system
+    "+.mgts.corp.net":
+    - system
+    "+.mgts.ru":
+    - system
+    "+.mr.ru":
+    - system
+    "+.msk.mts.ru":
+    - system
+    "+.mts-corp.ru":
+    - system
+    "+.mts-lab.ru":
+    - system
+    "+.mts.ru":
+    - system
+    "+.mtsbank.ru":
+    - system
+    "+.mtsit.com":
+    - system
+    "+.mtsit.local":
+    - system
+    "+.mtsretail.ru":
+    - system
+    "+.mws.ru":
+    - system
+    "+.redsecurity.ru":
+    - system
+    "+.sapsf.com":
+    - system
+    "+.stroki.ru":
+    - system
+    "+.superanalytics.ru":
+    - system
+    "+.ticketland.ru":
+    - system
+    "+.truetabs.ru":
+    - system
+    # END MANAGED CISCO DNS
+    ## cp_mts_outside.xml / 91.207.84.241 end
+    ### Cisco AnyConnect Secure Mobility Client end
+    #### Sergey's Macbook pro end
+    #### Sergey's Macbook pro begin
+    ### AnyConnect begin
+    ## Stream and MTS begin
+    # BEGIN MANAGED CISCO DNS
+    "+.stream.local":
+    - system
+    # END MANAGED CISCO DNS
+    ## Stream and MTS end
+    ### AnyConnect end
+    #### Sergey's Macbook pro end
+    "+.ru":
+    - 77.88.8.8
+    - system
+    "+.su":
+    - 77.88.8.8
+    - 1.1.1.1
+    "+.xn--p1ai":
+    - 77.88.8.8
+    - 1.1.1.1
+proxy-providers:
+  vless-space:
+    type: http
+    url: "https://YOUR_CLASH_SUBSCRIPTION_URL"
+    path: ./proxy_providers/vless-space.yaml
+    interval: 3600
+    proxy: DIRECT
+    header:
+      User-Agent:
+      - Agent
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 5000
+proxies: []
+proxy-groups:
+- name: MANUAL
+  type: select
+  proxies:
+  - LOW-RESTRICT-FOREIGN
+  - FASTER-FOREIGN
+  - RU-PROXY
+  - RU
+  - DIRECT
+  use:
+  - vless-space
+- name: PROXY
+  type: select
+  proxies:
+  - FASTER-FOREIGN
+  - MANUAL
+  - LOW-RESTRICT-FOREIGN
+  - RU-PROXY
+  - RU
+  - DIRECT
+- name: LOW-RESTRICT-FOREIGN
+  type: select
+  proxies:
+  - LOW-RESTRICT-AUTO
+  - LOW-RESTRICT-MANUAL
+- name: LOW-RESTRICT-AUTO
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  lazy: true
+  filter: '^(?!.*(?:USA|United States|Canada|Singapore|Hong Kong|France|United Kingdom|UK|UAE|United Arab Emirates|Russia|Россия|YT|LTE|Torrent|\| RU)).*(?:Finland|Poland|Sweden).*Gemini.*$'
+  use:
+  - vless-space
+- name: LOW-RESTRICT-MANUAL
+  type: select
+  filter: '^(?!.*(?:USA|United States|Canada|Singapore|Hong Kong|France|United Kingdom|UK|UAE|United Arab Emirates|Russia|Россия|YT|LTE|Torrent|\| RU)).*(?:Finland|Poland|Sweden).*Gemini.*$'
+  use:
+  - vless-space
+- name: FASTER-FOREIGN
+  type: url-test
+  url: https://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  lazy: true
+  filter: '^(?!.*(?:USA|United States|Canada|Russia|Россия|YT|LTE|Torrent|\| RU)).*(?:Finland|Netherlands|Poland|Sweden).*Gemini.*$'
+  use:
+  - vless-space
+- name: RU
+  type: url-test
+  url: http://connectivitycheck.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  lazy: true
+  filter: '^(?:.*Russia \| YT|.*Russia #2 \| YT|.*Russia \| LTE \| YT|.*Russia #2 \| LTE \| YT)$'
+  use:
+  - vless-space
+- name: RU-PROXY
+  type: fallback
+  url: https://www.avito.ru
+  interval: 300
+  timeout: 5000
+  lazy: false
+  proxies:
+  - RU
+- name: RU-SITES
+  type: select
+  proxies:
+  - RU-PROXY
+  - RU
+
+rule-providers:
+  steam:
+    type: http
+    behavior: classical
+    path: "./rules/steam.list"
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Steam/Steam.list
+    interval: 86400
+  domains_geo_detect:
+    type: http
+    behavior: classical
+    path: "./rules/domains_geo_detect.list"
+    url: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/main/rules/domains_geo_detect.list
+    interval: 86400
+  ru-bundle:
+    type: http
+    behavior: domain
+    format: mrs
+    path: "./rules/ru-bundle/rule.mrs"
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/ru-bundle/rule.mrs
+    interval: 86400
+  rknasnblock:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: "./rules/ru-bundle/rknasnblock.mrs"
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/ru-bundle/rknasnblock.mrs
+    interval: 86400
+  ru-app-list:
+    type: http
+    behavior: classical
+    format: yaml
+    path: "./rules/ru-app-list.yaml"
+    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/other/ru-app-list.yaml
+    interval: 86400
+rules:
+- DOMAIN-SUFFIX,chatgpt.com,PROXY
+- DOMAIN-SUFFIX,openai.com,PROXY
+- DOMAIN-SUFFIX,oaistatic.com,PROXY
+- DOMAIN-SUFFIX,oaiusercontent.com,PROXY
+- DOMAIN-SUFFIX,auth0.com,PROXY
+- DOMAIN-SUFFIX,github.com,DIRECT
+- DOMAIN-SUFFIX,githubusercontent.com,DIRECT
+- DOMAIN,your-provider.example,DIRECT
+- DOMAIN,bybit-exchange.github.io,LOW-RESTRICT-FOREIGN
+- DOMAIN,bybit.ada.support,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bycsi.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,byapis.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bycbe.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bymj.io,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,byabcde.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,byapps.net,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,byd3c3.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit.biz,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybdc6.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit-global.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit.cloud,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit.org,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybitglobal.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bytick.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit-tr.com,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit.kz,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit.nl,LOW-RESTRICT-FOREIGN
+- DOMAIN-SUFFIX,bybit.eu,LOW-RESTRICT-FOREIGN
+- DOMAIN-KEYWORD,bybit,LOW-RESTRICT-FOREIGN
+- DOMAIN-KEYWORD,bytick,LOW-RESTRICT-FOREIGN
+- RULE-SET,steam,DIRECT
+- RULE-SET,domains_geo_detect,RU-SITES
+- RULE-SET,ru-bundle,RU-SITES
+- RULE-SET,rknasnblock,RU-SITES,no-resolve
+- RULE-SET,ru-app-list,RU-SITES
+- DOMAIN-KEYWORD,steam,DIRECT
+- DOMAIN-KEYWORD,valve,DIRECT
+- DOMAIN-KEYWORD,sdr,DIRECT
+- DOMAIN-KEYWORD,yandex,RU-SITES
+- DOMAIN-SUFFIX,ya.ru,RU-SITES
+- DOMAIN-SUFFIX,yandex.net,RU-SITES
+- DOMAIN-SUFFIX,yandex.com,RU-SITES
+- DOMAIN-SUFFIX,yandex.st,RU-SITES
+- DOMAIN-SUFFIX,yastatic.net,RU-SITES
+- DOMAIN-SUFFIX,yastat.net,RU-SITES
+- DOMAIN-SUFFIX,rutube.ru,RU-SITES
+- DOMAIN-SUFFIX,rutube.video,RU-SITES
+- DOMAIN-SUFFIX,rttv.ru,RU-SITES
+- DOMAIN-SUFFIX,mts.ru,RU-SITES
+- DOMAIN-SUFFIX,mtsbank.ru,RU-SITES
+- DOMAIN-SUFFIX,moimts.ru,RU-SITES
+- DOMAIN-SUFFIX,mtscdn.ru,RU-SITES
+- DOMAIN-SUFFIX,mtsstatic.ru,RU-SITES
+- DOMAIN-SUFFIX,tbank.ru,RU-SITES
+- DOMAIN-SUFFIX,tinkoff.ru,RU-SITES
+- DOMAIN-SUFFIX,tinkoffbank.ru,RU-SITES
+- DOMAIN-SUFFIX,ru,RU-SITES
+- DOMAIN-SUFFIX,su,RU-SITES
+- DOMAIN-SUFFIX,xn--p1ai,RU-SITES
+- DOMAIN-SUFFIX,local,DIRECT
+- IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+- IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+- IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+- IP-CIDR,169.254.0.0/16,DIRECT,no-resolve
+- PROCESS-NAME,CrossOver,DIRECT
+- PROCESS-NAME,wineserver,DIRECT
+- PROCESS-NAME,wineloader,DIRECT
+- PROCESS-NAME,winewrapper.exe,DIRECT
+- PROCESS-NAME,winedevice.exe,DIRECT
+- PROCESS-NAME,Menu Helper,DIRECT
+- PROCESS-NAME,steam.exe,DIRECT
+- PROCESS-NAME,steamservice.exe,DIRECT
+- PROCESS-NAME,steamwebhelper.exe,DIRECT
+- PROCESS-NAME-REGEX,(?i).*\.exe$,DIRECT
+- PROCESS-PATH-REGEX,(?i).*CrossOver.*,DIRECT
+- PROCESS-NAME,Cisco AnyConnect Secure Mobility Client,DIRECT
+- PROCESS-NAME,AnyConnect,DIRECT
+- PROCESS-NAME,vpnagentd,DIRECT
+- PROCESS-NAME,com.cisco.anyconnect.macos.acsockext,DIRECT
+- GEOIP,RU,RU-SITES
+- MATCH,DIRECT
