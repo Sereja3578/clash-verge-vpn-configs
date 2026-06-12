@@ -200,6 +200,10 @@ rules:
 - DOMAIN-KEYWORD,bybit,LOW-RESTRICT-FOREIGN
 - DOMAIN-KEYWORD,bytick,LOW-RESTRICT-FOREIGN
 - RULE-SET,steam,DIRECT
+- DOMAIN-SUFFIX,instagram.com,DIRECT
+- DOMAIN-SUFFIX,cdninstagram.com,DIRECT
+- DOMAIN-SUFFIX,fbcdn.net,DIRECT
+- DOMAIN-SUFFIX,facebook.com,DIRECT
 - RULE-SET,domains_geo_detect,RU-SITES
 - RULE-SET,ru-bundle,RU-SITES
 - RULE-SET,rknasnblock,RU-SITES,no-resolve
