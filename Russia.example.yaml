@@ -161,57 +161,69 @@ rule-providers:
     path: "./rules/ru-app-list.yaml"
     url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/other/ru-app-list.yaml
     interval: 86400
+  common-openai:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-openai.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/openai.list
+    interval: 86400
+  common-bybit-low-restrict:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-bybit-low-restrict.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/bybit-low-restrict.list
+    interval: 86400
+  common-instagram-meta:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-instagram-meta.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/instagram-meta.list
+    interval: 86400
+  common-ru-tlds:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-ru-tlds.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/ru-tlds.list
+    interval: 86400
+  abroad-ozon:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/abroad-ozon.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/ozon.list
+    interval: 86400
+  abroad-yandex:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/abroad-yandex.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/yandex.list
+    interval: 86400
+  abroad-mailru:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/abroad-mailru.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/mailru.list
+    interval: 86400
+  abroad-vk:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/abroad-vk.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/vk.list
+    interval: 86400
 rules:
-- DOMAIN-SUFFIX,chatgpt.com,PROXY
-- DOMAIN-SUFFIX,openai.com,PROXY
-- DOMAIN-SUFFIX,oaistatic.com,PROXY
-- DOMAIN-SUFFIX,oaiusercontent.com,PROXY
-- DOMAIN-SUFFIX,auth0.com,PROXY
+- RULE-SET,common-openai,PROXY
 - DOMAIN-SUFFIX,github.com,DIRECT
-- DOMAIN-SUFFIX,cdninstagram.com,PROXY
-- DOMAIN-SUFFIX,graph.instagram.com,PROXY
-- DOMAIN-SUFFIX,graph-fallback.instagram.com,PROXY
-- DOMAIN-SUFFIX,ig.me,PROXY
-- DOMAIN-SUFFIX,igcdn.com,PROXY
-- DOMAIN-SUFFIX,igtv.com,PROXY
-- DOMAIN-SUFFIX,instagram.com,PROXY
-- DOMAIN-SUFFIX,instagram-brand.com,PROXY
-- DOMAIN-SUFFIX,instagram-engineering.com,PROXY
-- DOMAIN-SUFFIX,instagram-help.com,PROXY
-- DOMAIN-SUFFIX,instagram-press.com,PROXY
-- DOMAIN-SUFFIX,instagram-press.net,PROXY
-- DOMAIN-SUFFIX,instagramci.com,PROXY
-- DOMAIN-SUFFIX,instagramcn.com,PROXY
-- DOMAIN-SUFFIX,instagramdi.com,PROXY
-- DOMAIN-SUFFIX,instagramlogin.com,PROXY
-- DOMAIN-SUFFIX,instagramm.com,PROXY
-- DOMAIN-SUFFIX,instagrampartners.com,PROXY
-- DOMAIN-SUFFIX,instagramphoto.com,PROXY
+- RULE-SET,common-instagram-meta,PROXY
 - DOMAIN-SUFFIX,githubusercontent.com,DIRECT
 - DOMAIN,your-provider.example,DIRECT
-- DOMAIN,bybit-exchange.github.io,LOW-RESTRICT-FOREIGN
-- DOMAIN,bybit.ada.support,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bycsi.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,byapis.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bycbe.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bymj.io,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,byabcde.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,byapps.net,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,byd3c3.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit.biz,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybdc6.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit-global.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit.cloud,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit.org,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybitglobal.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bytick.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit-tr.com,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit.kz,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit.nl,LOW-RESTRICT-FOREIGN
-- DOMAIN-SUFFIX,bybit.eu,LOW-RESTRICT-FOREIGN
-- DOMAIN-KEYWORD,bybit,LOW-RESTRICT-FOREIGN
-- DOMAIN-KEYWORD,bytick,LOW-RESTRICT-FOREIGN
+- RULE-SET,common-bybit-low-restrict,LOW-RESTRICT-FOREIGN
 - RULE-SET,steam,DIRECT
 - RULE-SET,domains_geo_detect,DIRECT
 - RULE-SET,ru-bundle,DIRECT
@@ -220,51 +232,11 @@ rules:
 - DOMAIN-KEYWORD,steam,DIRECT
 - DOMAIN-KEYWORD,valve,DIRECT
 - DOMAIN-KEYWORD,sdr,DIRECT
-- DOMAIN-SUFFIX,ewisdom.us.kg,DIRECT
-- DOMAIN-SUFFIX,o3.ru,DIRECT
-- DOMAIN-SUFFIX,o3t.ru,DIRECT
-- DOMAIN-SUFFIX,o3team.ru,DIRECT
-- DOMAIN-SUFFIX,o-courier.ru,DIRECT
-- DOMAIN-SUFFIX,ocourier.ru,DIRECT
-- DOMAIN-SUFFIX,ozon-dostavka.ru,DIRECT
-- DOMAIN-SUFFIX,ozon-credit.ru,DIRECT
-- DOMAIN-SUFFIX,ozon-tech.ru,DIRECT
-- DOMAIN-SUFFIX,ozon.by,DIRECT
-- DOMAIN-SUFFIX,ozon.com,DIRECT
-- DOMAIN-SUFFIX,ozon.com.by,DIRECT
-- DOMAIN-SUFFIX,ozon.com.kz,DIRECT
-- DOMAIN-SUFFIX,ozon.dev,DIRECT
-- DOMAIN-SUFFIX,ozon.express,DIRECT
-- DOMAIN-SUFFIX,ozon.kz,DIRECT
-- DOMAIN-SUFFIX,ozon.li,DIRECT
-- DOMAIN-SUFFIX,ozon.ru,DIRECT
-- DOMAIN-SUFFIX,ozon.tech,DIRECT
-- DOMAIN-SUFFIX,ozon.tm,DIRECT
-- DOMAIN-SUFFIX,ozon.travel,DIRECT
-- DOMAIN-SUFFIX,ozoncamp.pro,DIRECT
-- DOMAIN-SUFFIX,ozoncard.ru,DIRECT
-- DOMAIN-SUFFIX,ozoncom.by,DIRECT
-- DOMAIN-SUFFIX,ozoncorporate.ru,DIRECT
-- DOMAIN-SUFFIX,ozone.ru,DIRECT
-- DOMAIN-SUFFIX,ozonglobalevents.com,DIRECT
-- DOMAIN-SUFFIX,ozonpartners.by,DIRECT
-- DOMAIN-SUFFIX,ozonpartners.ru,DIRECT
-- DOMAIN-SUFFIX,ozonrocet.by,DIRECT
-- DOMAIN-SUFFIX,ozonroket.by,DIRECT
-- DOMAIN-SUFFIX,ozonru.co.il,DIRECT
-- DOMAIN-SUFFIX,ozonru.com,DIRECT
-- DOMAIN-SUFFIX,ozonru.eu,DIRECT
-- DOMAIN-SUFFIX,ozonru.me,DIRECT
-- DOMAIN-SUFFIX,ozonsport.ru,DIRECT
-- DOMAIN-SUFFIX,ozonstatus.ru,DIRECT
-- DOMAIN-SUFFIX,ozonusercontent.com,DIRECT
-- DOMAIN-SUFFIX,rocketozon.by,DIRECT
-- DOMAIN-SUFFIX,xn----8sbahiqzthbd0bn.xn--p1ai,DIRECT
-- DOMAIN-SUFFIX,xn--80aafgovrgbc7am.xn--p1ai,DIRECT
-- DOMAIN-SUFFIX,xn--e1adjldbbpv.xn--90ais,DIRECT
-- DOMAIN-SUFFIX,ru,DIRECT
-- DOMAIN-SUFFIX,su,DIRECT
-- DOMAIN-SUFFIX,xn--p1ai,DIRECT
+- RULE-SET,abroad-yandex,DIRECT
+- RULE-SET,abroad-mailru,DIRECT
+- RULE-SET,abroad-vk,DIRECT
+- RULE-SET,abroad-ozon,DIRECT
+- RULE-SET,common-ru-tlds,DIRECT
 - DOMAIN-SUFFIX,local,DIRECT
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
 - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
