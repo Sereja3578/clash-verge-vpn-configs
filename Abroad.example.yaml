@@ -266,7 +266,7 @@ rule-providers:
     url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/tbank.list
     interval: 86400
 rules:
-- RULE-SET,common-openai,PROXY
+- RULE-SET,common-openai,DIRECT
 - DOMAIN-SUFFIX,github.com,DIRECT
 - DOMAIN-SUFFIX,githubusercontent.com,DIRECT
 - DOMAIN,your-provider.example,DIRECT
