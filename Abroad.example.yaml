@@ -146,20 +146,6 @@ rule-providers:
     path: "./rules/domains_geo_detect.list"
     url: https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/refs/heads/main/rules/domains_geo_detect.list
     interval: 86400
-  ru-bundle:
-    type: http
-    behavior: domain
-    format: mrs
-    path: "./rules/ru-bundle/rule.mrs"
-    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/ru-bundle/rule.mrs
-    interval: 86400
-  rknasnblock:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    path: "./rules/ru-bundle/rknasnblock.mrs"
-    url: https://github.com/legiz-ru/mihomo-rule-sets/raw/main/ru-bundle/rknasnblock.mrs
-    interval: 86400
   ru-app-list:
     type: http
     behavior: classical
@@ -187,6 +173,41 @@ rule-providers:
     format: text
     path: "./rules/vpn-set-rules/common-instagram-meta.list"
     url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/instagram-meta.list
+    interval: 86400
+  common-whatsapp:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-whatsapp.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/whatsapp.list
+    interval: 86400
+  common-linkedin:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-linkedin.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/linkedin.list
+    interval: 86400
+  common-discord:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-discord.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/discord.list
+    interval: 86400
+  common-twitter-x:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-twitter-x.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/twitter-x.list
+    interval: 86400
+  common-google-ai:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-google-ai.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/google-ai.list
     interval: 86400
   common-ru-tlds:
     type: http
@@ -252,6 +273,11 @@ rules:
 - RULE-SET,common-bybit-low-restrict,LOW-RESTRICT-FOREIGN
 - RULE-SET,steam,DIRECT
 - RULE-SET,common-instagram-meta,DIRECT
+- RULE-SET,common-whatsapp,DIRECT
+- RULE-SET,common-linkedin,DIRECT
+- RULE-SET,common-discord,DIRECT
+- RULE-SET,common-twitter-x,DIRECT
+- RULE-SET,common-google-ai,DIRECT
 - RULE-SET,domains_geo_detect,RU-SITES
 - RULE-SET,abroad-yandex,RU-SITES
 - RULE-SET,abroad-mailru,RU-SITES
@@ -260,8 +286,6 @@ rules:
 - RULE-SET,abroad-mts,RU-SITES
 - RULE-SET,abroad-tbank,RU-SITES
 - RULE-SET,abroad-ozon,RU-SITES
-- RULE-SET,ru-bundle,RU-SITES
-- RULE-SET,rknasnblock,RU-SITES,no-resolve
 - RULE-SET,ru-app-list,RU-SITES
 - DOMAIN-KEYWORD,steam,DIRECT
 - DOMAIN-KEYWORD,valve,DIRECT

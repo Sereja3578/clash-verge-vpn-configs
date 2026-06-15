@@ -182,6 +182,41 @@ rule-providers:
     path: "./rules/vpn-set-rules/common-instagram-meta.list"
     url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/instagram-meta.list
     interval: 86400
+  common-whatsapp:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-whatsapp.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/whatsapp.list
+    interval: 86400
+  common-linkedin:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-linkedin.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/linkedin.list
+    interval: 86400
+  common-discord:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-discord.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/discord.list
+    interval: 86400
+  common-twitter-x:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-twitter-x.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/twitter-x.list
+    interval: 86400
+  common-google-ai:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/common-google-ai.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/google-ai.list
+    interval: 86400
   common-ru-tlds:
     type: http
     behavior: classical
@@ -238,21 +273,39 @@ rule-providers:
     path: "./rules/vpn-set-rules/abroad-tbank.list"
     url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Abroad/tbank.list
     interval: 86400
+  russia-youtube:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/russia-youtube.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Russia/youtube.list
+    interval: 86400
+  russia-ru-blocked-or-sensitive:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/russia-ru-blocked-or-sensitive.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Russia/ru-blocked-or-sensitive.list
+    interval: 86400
 rules:
 - RULE-SET,common-openai,PROXY
 - DOMAIN-SUFFIX,github.com,DIRECT
 - RULE-SET,common-instagram-meta,PROXY
+- RULE-SET,common-whatsapp,PROXY
+- RULE-SET,common-linkedin,PROXY
+- RULE-SET,common-discord,PROXY
+- RULE-SET,common-twitter-x,PROXY
+- RULE-SET,common-google-ai,PROXY
+- RULE-SET,russia-youtube,PROXY
+- RULE-SET,russia-ru-blocked-or-sensitive,PROXY
 - DOMAIN-SUFFIX,githubusercontent.com,DIRECT
 - DOMAIN,your-provider.example,DIRECT
 - RULE-SET,common-bybit-low-restrict,LOW-RESTRICT-FOREIGN
 - RULE-SET,steam,DIRECT
-- RULE-SET,domains_geo_detect,DIRECT
-- RULE-SET,ru-bundle,DIRECT
-- RULE-SET,rknasnblock,DIRECT,no-resolve
-- RULE-SET,ru-app-list,DIRECT
 - DOMAIN-KEYWORD,steam,DIRECT
 - DOMAIN-KEYWORD,valve,DIRECT
 - DOMAIN-KEYWORD,sdr,DIRECT
+- RULE-SET,domains_geo_detect,DIRECT
 - RULE-SET,abroad-yandex,DIRECT
 - RULE-SET,abroad-mailru,DIRECT
 - RULE-SET,abroad-vk,DIRECT
@@ -260,7 +313,10 @@ rules:
 - RULE-SET,abroad-mts,DIRECT
 - RULE-SET,abroad-tbank,DIRECT
 - RULE-SET,abroad-ozon,DIRECT
+- RULE-SET,ru-app-list,DIRECT
 - RULE-SET,common-ru-tlds,DIRECT
+- RULE-SET,ru-bundle,PROXY
+- RULE-SET,rknasnblock,PROXY,no-resolve
 - DOMAIN-SUFFIX,local,DIRECT
 - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
 - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
