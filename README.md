@@ -14,15 +14,32 @@
 3. Замените правило `DOMAIN,your-provider.example,DIRECT` на домен своего provider, чтобы подписка обновлялась напрямую.
 4. Импортируйте профиль в Clash Verge Rev и проверьте его через встроенную проверку конфигурации.
 
+## macOS DNS preflight
+
+На macOS перед TUN-режимом проверьте, что legacy resolver file существует:
+
+```sh
+ls -l /etc/resolv.conf /var/run/resolv.conf
+```
+
+Если `/etc/resolv.conf` отсутствует, создайте стандартную ссылку:
+
+```sh
+sudo ln -sf /var/run/resolv.conf /etc/resolv.conf
+```
+
+Mihomo/Clash Verge может читать `/etc/resolv.conf` в TUN/DNS-сценариях. Если
+файла нет, DNS может падать с ошибкой `failed to read /etc/resolv.conf`, хотя
+обычные macOS-приложения продолжают резолвить домены через SystemConfiguration.
+
 ## Безопасность
 
 Реальные локальные профили, подписки и provider-файлы намеренно не отслеживаются Git. В публичный репозиторий должны попадать только переносимые примеры без личных URL, ключей и подписок.
 
-## Cisco / Enterprise DNS
+## Cisco / Enterprise VPN
 
-Examples не содержат конкретные корпоративные Cisco AnyConnect DNS suffixes. Если вам нужно автоматизировать такую логику, updater может добавлять managed blocks в:
-
-- `dns.fake-ip-filter` - чтобы внутренние корпоративные домены не попадали в fake-ip.
-- `dns.nameserver-policy` - чтобы эти домены резолвились через `system`, то есть через DNS, который Cisco AnyConnect выдал системе.
-
-Это опционально: во многих сценариях Cisco AnyConnect сам настраивает локальный DNS, и отдельная автоматизация нужна только если Clash перехватывает DNS раньше системы.
+Examples не содержат конкретные корпоративные Cisco AnyConnect DNS suffixes,
+IP-адреса или process rules. Проверенный переносимый минимум для macOS - рабочий
+`/etc/resolv.conf` из секции выше и обычные private network rules в профиле.
+Корпоративные домены/IP лучше добавлять только локально и только после проверки
+логов, потому что такие правила непереносимы между компаниями и пользователями.
