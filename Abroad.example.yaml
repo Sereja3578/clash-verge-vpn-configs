@@ -132,6 +132,10 @@ proxy-groups:
   proxies:
   - RU-PROXY
   - RU
+- name: ru-restricted-services-via-router-ru-vps
+  type: select
+  proxies:
+  - DIRECT
 
 rule-providers:
   steam:
@@ -209,6 +213,13 @@ rule-providers:
     path: "./rules/vpn-set-rules/common-google-ai.list"
     url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/google-ai.list
     interval: 86400
+  ru-restricted-services:
+    type: http
+    behavior: classical
+    format: text
+    path: "./rules/vpn-set-rules/ru-restricted-services.list"
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/ru-restricted-services.list
+    interval: 3600
   common-ru-tlds:
     type: http
     behavior: classical
@@ -278,6 +289,7 @@ rules:
 - RULE-SET,common-discord,DIRECT
 - RULE-SET,common-twitter-x,DIRECT
 - RULE-SET,common-google-ai,DIRECT
+- RULE-SET,ru-restricted-services,ru-restricted-services-via-router-ru-vps
 - RULE-SET,domains_geo_detect,RU-SITES
 - RULE-SET,abroad-yandex,RU-SITES
 - RULE-SET,abroad-mailru,RU-SITES
