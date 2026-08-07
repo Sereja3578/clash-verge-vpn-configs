@@ -226,7 +226,7 @@ rule-providers:
     behavior: classical
     format: text
     path: "./rules/vpn-set-rules/ru-restricted-services.list"
-    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/main/Common/ru-restricted-services.list
+    url: https://raw.githubusercontent.com/Sereja3578/vpn-set-rules/refs/heads/main/Common/ru-restricted-services.list
     interval: 3600
   common-ru-tlds:
     type: http
