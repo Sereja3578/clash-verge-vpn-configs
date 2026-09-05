@@ -93,12 +93,12 @@ proxy-groups:
   interval: 300
   tolerance: 50
   lazy: true
-  filter: '^(?!.*(?:USA|United States|Canada|Singapore|Hong Kong|France|United Kingdom|UK|UAE|United Arab Emirates|Russia|Россия|YT|LTE|Torrent|\| RU)).*(?:Finland|Poland|Sweden).*Gemini.*$'
+  filter: '^(?!.*(?:USA|United States|Canada|Singapore|Hong Kong|France|United Kingdom|UK|UAE|United Arab Emirates|Russia|Россия|YT|LTE|Torrent|\| RU)).*(?:Finland|Germany|Netherlands|Poland|Sweden).*Gemini.*$'
   use:
   - vless-space
 - name: LOW-RESTRICT-MANUAL
   type: select
-  filter: '^(?!.*(?:USA|United States|Canada|Singapore|Hong Kong|France|United Kingdom|UK|UAE|United Arab Emirates|Russia|Россия|YT|LTE|Torrent|\| RU)).*(?:Finland|Poland|Sweden).*Gemini.*$'
+  filter: '^(?!.*(?:USA|United States|Canada|Singapore|Hong Kong|France|United Kingdom|UK|UAE|United Arab Emirates|Russia|Россия|YT|LTE|Torrent|\| RU)).*(?:Finland|Germany|Netherlands|Poland|Sweden).*Gemini.*$'
   use:
   - vless-space
 - name: FASTER-FOREIGN
