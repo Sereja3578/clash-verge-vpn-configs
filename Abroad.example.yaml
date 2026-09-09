@@ -291,13 +291,13 @@ rules:
 - RULE-SET,common-google-ai,DIRECT
 - RULE-SET,ru-restricted-services,ru-restricted-services-via-router-ru-vps
 - RULE-SET,domains_geo_detect,RU-SITES
-- RULE-SET,abroad-yandex,RU-SITES
+- RULE-SET,abroad-yandex,DIRECT
 - RULE-SET,abroad-mailru,RU-SITES
 - RULE-SET,abroad-vk,RU-SITES
-- RULE-SET,abroad-rutube,RU-SITES
+- RULE-SET,abroad-rutube,DIRECT
 - RULE-SET,abroad-mts,RU-SITES
 - RULE-SET,abroad-tbank,RU-SITES
-- RULE-SET,abroad-ozon,RU-SITES
+- RULE-SET,abroad-ozon,DIRECT
 - RULE-SET,ru-app-list,RU-SITES
 - DOMAIN-KEYWORD,steam,DIRECT
 - DOMAIN-KEYWORD,valve,DIRECT
